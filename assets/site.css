@@ -339,7 +339,8 @@ dialog::backdrop { background: rgba(12, 18, 32, .6); -webkit-backdrop-filter: bl
 .demo__stage::before { left: 0; background: linear-gradient(90deg, #22365A, rgba(41, 70, 111, 0)); opacity: .35; }
 .demo__stage::after { right: 0; background: linear-gradient(270deg, #22365A, rgba(41, 70, 111, 0)); opacity: .35; }
 .demo__video { position: absolute; inset: 0; margin: auto; height: 100%; width: auto; aspect-ratio: var(--ratio); object-fit: cover; }
-.demo__sound { position: absolute; z-index: 3; left: 50%; bottom: 72px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: rgba(10, 16, 30, .6); color: var(--paper); font-size: 13px; font-weight: 700; }
+/* 「点一下出声」在右上角：正片字幕在画面下方，放底部居中会压住字幕 */
+.demo__sound { position: absolute; z-index: 3; top: 16px; right: 16px; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: rgba(10, 16, 30, .6); color: var(--paper); font-size: 13px; font-weight: 700; }
 .vc { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 18px 16px 14px; background: linear-gradient(0deg, rgba(10, 16, 30, .55), rgba(10, 16, 30, 0)); color: var(--paper); font-size: 13px; }
 .vc__btn { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; flex: none; transition: background-color var(--dur-fast) var(--ease-out); }
 @media (hover: hover) { .vc__btn:hover { background: rgba(251, 250, 247, .14); } }
@@ -867,9 +868,10 @@ a.toc__item:active { background: var(--line); }
   .demo__box { width: 100%; min-height: 100%; border-radius: 0; background: #121B2E; color: var(--paper); box-shadow: none; }
   .demo__top { display: flex; justify-content: space-between; align-items: center; height: 56px; padding: 0 20px; font-size: 15px; }
   .demo__top span { font-size: 13px; color: rgba(251, 250, 247, .55); }
-  .demo__stage { aspect-ratio: 1 / 1; }
+  .demo__stage { aspect-ratio: var(--ratio, 16 / 9); }
   .demo__stage::before, .demo__stage::after { display: none; }
   .demo__video { width: 100%; height: 100%; }
+  .demo__sound { top: 12px; right: 12px; }
   .demo__text { display: block; padding: 24px 20px 32px; }
   .demo__lab { position: static; color: rgba(251, 250, 247, .6); }
   .demo__steps li { padding: 14px 0; border-bottom: 1px solid rgba(251, 250, 247, .1); gap: 2px; }

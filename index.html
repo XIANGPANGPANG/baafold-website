@@ -456,13 +456,13 @@ if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)&
 
 <dialog class="demo" id="demo" aria-label="看演示">
   <div class="demo__box">
-    <div class="demo__top"><b>看演示</b><span>0:28</span></div>
-    <div class="demo__stage" style="--ratio:1/1">
-      <video class="demo__video" src="assets/demo/demo-placeholder.mp4" poster="assets/demo/demo-placeholder-poster.webp" playsinline muted preload="none" data-video></video>
+    <div class="demo__top"><b>看演示</b><span>1:04</span></div>
+    <div class="demo__stage" style="--ratio:16/9">
+      <video class="demo__video" src="assets/demo/baafold-demo.mp4" poster="assets/demo/baafold-demo-poster.jpg" playsinline muted preload="none" data-video></video>
       <button class="demo__sound" type="button" data-sound hidden><svg class="ico" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg>点一下出声</button>
       <div class="vc" data-vc>
         <button class="vc__btn" type="button" aria-label="暂停" data-vc-play><span class="vc__pause"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></span><span class="vc__play"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg></span></button>
-        <span class="vc__time"><span data-vc-cur>0:00</span> / <span data-vc-dur>0:28</span></span>
+        <span class="vc__time"><span data-vc-cur>0:00</span> / <span data-vc-dur>1:04</span></span>
         <input class="vc__bar" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度" data-vc-seek>
         <button class="vc__btn" type="button" aria-label="打开声音" data-vc-mute><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="vc__wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="vc__mx" d="M16 9l6 6M22 9l-6 6"/></svg></button>
         <button class="vc__btn" type="button" aria-label="全屏" data-vc-full><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
