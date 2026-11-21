@@ -1,5 +1,6 @@
 // 咩了脱敏（Baafold）官网 v4 —— 少量交互。系统判断和“允许动效”在 <head> 里内联（data-os、html.anim）。
 // 规则：交互规范 193:2 / 194:2；没有任何跟随鼠标的效果；减少动态效果时不播入场动效、视频不自动播放。
+// 各段共用这一个函数作用域（var 不分块）：新段落的变量名别和前面的重名，否则互相覆盖（seen、io 曾因此出错）。
 (function () {
   "use strict";
   var $ = function (s, el) { return (el || document).querySelector(s); };
@@ -156,12 +157,12 @@
 
   // ---------------------------------------------------------------- 首页入场动效：进视口播一次（html.anim 只在允许动效时存在）
   if (document.documentElement.classList.contains("anim")) {
-    var io = new IntersectionObserver(function (entries) {
+    var reveal = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+        if (en.isIntersecting) { en.target.classList.add("in"); reveal.unobserve(en.target); }
       });
     }, { threshold: 0.35, rootMargin: "0px 0px -10% 0px" });
-    $$("[data-anim]").forEach(function (el) { io.observe(el); });
+    $$("[data-anim]").forEach(function (el) { reveal.observe(el); });
   }
 
   // ---------------------------------------------------------------- 看演示（自己服务器上的视频，自己的控件）
@@ -283,10 +284,10 @@
     var links = $$("a", onpage);
     var targets = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
     var mark = function (id) { links.forEach(function (a) { if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); }); };
-    var seen = {};
+    var inView = {};
     var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { seen[en.target.id] = en.isIntersecting; });
-      var cur = targets.filter(function (t) { return t && seen[t.id]; })[0];
+      entries.forEach(function (en) { inView[en.target.id] = en.isIntersecting; });
+      var cur = targets.filter(function (t) { return t && inView[t.id]; })[0];
       if (cur) mark(cur.id);
     }, { rootMargin: "-80px 0px -55% 0px" });
     targets.forEach(function (t) { if (t) spy.observe(t); });
